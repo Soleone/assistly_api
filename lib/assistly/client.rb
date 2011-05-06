@@ -51,7 +51,7 @@ module Assistly
       end
   
       def resource_singular
-        class_name = self.name.split('::').last.downcase
+        self.name.split('::').last.downcase
       end
       
       def resource_plural
@@ -78,7 +78,12 @@ module Assistly
         puts "Sending #{verb} request to #{path}..." if debug_mode
         response = client.send(verb, path)
         puts response.body.to_s if debug_mode
-        result = Result.new(parse(response), resource_singular)
+        hash = parse(response)
+        if hash['results']
+          Result.new(hash, self)
+        else
+          self.new(hash)
+        end
       end
   
       def parse(response, format = DEFAULT_FORMAT)

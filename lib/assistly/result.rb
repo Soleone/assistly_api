@@ -9,8 +9,10 @@ module Assistly
         @total = hash['total'].to_i
         @count = hash['count'].to_i
         @page  = hash['page'].to_i
+        return unless hash['results']
+        
         @results = hash['results'].collect do |resource|
-          Resource.new(resource[klass])
+          klass.new(resource)
         end
         super(@results)
       end
