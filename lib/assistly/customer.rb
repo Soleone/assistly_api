@@ -3,7 +3,7 @@ module Assistly
     
     class Customer < Base
       def self.all(options = {})
-        get
+        get(options)
       end
       
       def self.update(options)
@@ -11,7 +11,7 @@ module Assistly
       end
       
       def self.create_phone(options)
-        options[:nested_resource] = "/#{options[:id]}/phones"
+        options[:nested_resource] = "/phones"
         post(options)
       end
       
