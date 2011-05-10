@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class AuthenticationTest < Test::Unit::TestCase
   def setup    
-    @authentication = Assistly::Authentication.new(consumer_key, consumer_secret, subdomain)
+    @authentication = Assistly::API::Authentication.new(consumer_key, consumer_secret, subdomain)
   end
   
   def test_initialize_sets_consumer_key_and_secret
@@ -23,7 +23,7 @@ class AuthenticationTest < Test::Unit::TestCase
   end
   
   def test_authenticate_from_access_token
-    @authentication = Assistly::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
+    @authentication = Assistly::API::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
     assert @authentication.valid?
   end
 end

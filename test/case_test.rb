@@ -4,7 +4,7 @@ class CaseTest < Test::Unit::TestCase
   include Assistly::API
   
   def setup
-    @authentication = Assistly::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
+    @authentication = Assistly::API::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
     Assistly::API::Base.authentication = @authentication
     # Assistly::API::Base.debug_mode = true
   end

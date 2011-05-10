@@ -6,7 +6,7 @@ module Assistly
         get(options)
       end
       
-      def self.update(options)
+      def self.update_attributes(options)
         put(options)
       end
       
