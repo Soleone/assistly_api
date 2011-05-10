@@ -32,6 +32,7 @@ module Assistly
       end
       alias all find
 
+
       private
 
       def get(options = {})
