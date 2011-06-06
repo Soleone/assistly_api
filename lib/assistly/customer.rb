@@ -3,7 +3,7 @@ module Assistly
     
     class Customer < Base
       def self.all(options = {})
-        get
+        get(options)
       end
       
       def self.update(options)
