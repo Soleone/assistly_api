@@ -37,9 +37,14 @@ module Assistly
       def self.client
         @@client ||= @@authentication.access_token
       end
+      
+      # Turn an options hash into a query string.
+      def self.query_string(options)
+        options.to_a.reduce("?"){ |query_string, keypair| query_string << "#{keypair[0]}=#{keypair[1]}&" }.chop!
+      end
     
       def self.get(options = {})
-        response = client.get(full_path(options[:nested_resource]), options)
+        response = client.request(:get,full_path(options[:nested_resource]) + query_string(options))
         puts response.body if debug_mode
         response.body
       end
