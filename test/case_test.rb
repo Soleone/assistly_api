@@ -4,14 +4,13 @@ class CaseTest < Test::Unit::TestCase
   include Assistly::API
   
   def setup
-    @authentication = Assistly::API::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
-    Assistly::API::Base.authentication = @authentication
     # Assistly::API::Base.debug_mode = true
+    @site = Assistly::API::Base.authentication.site
   end
   
   def test_case_agent_url
     interaction = Case.find(:id => 3463)
-    assert_equal "https://#{subdomain}.assistly.com/agent/case/3463", interaction.agent_url
+    assert_equal "#{@site}/agent/case/3463", interaction.agent_url
   end
   
   def test_get_cases
@@ -19,11 +18,11 @@ class CaseTest < Test::Unit::TestCase
   end
   
   def test_get_cases_by_customer_email
-    cases = Case.find(:email => 'dennistheisen@gmail.com', :count => 1)
-    assert_equal 1, cases.count
-    assert_equal 1, cases.size
+    cases = Case.find(:email => 'dennistheisen@gmail.com', :count => 10)
+    assert_equal 10, cases.count
+    assert_equal 10, cases.size
     assert_equal 1, cases.page
-    puts cases.first.inspect
+    puts cases.last.inspect
   end
   
   def test_get_cases_by_customer_email_and_status

@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class InteractionTest < Test::Unit::TestCase
   def setup
-    @authentication = Assistly::API::Authentication.new(consumer_key, consumer_secret, subdomain, :access_token_key => access_token_key, :access_token_secret => access_token_secret)
-    Assistly::API::Base.authentication = @authentication
     Assistly::API::Base.debug_mode = true
   end
   
