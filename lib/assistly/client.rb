@@ -1,3 +1,5 @@
+require 'uri'
+
 module Assistly
   module API
     module Client
@@ -70,7 +72,7 @@ module Assistly
       end
   
       def build_params(params)
-        params.map{|key, value| "#{key}=#{value}"}.join('&')
+        params.map{|key, value| "#{URI.escape(key.to_s)}=#{URI.escape(value.to_s)}"}.join('&')
       end
   
       def request(verb, options = {})

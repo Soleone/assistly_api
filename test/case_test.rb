@@ -9,8 +9,8 @@ class CaseTest < Test::Unit::TestCase
   end
   
   def test_case_agent_url
-    interaction = Case.find(:id => 3463)
-    assert_equal "#{@site}/agent/case/3463", interaction.agent_url
+    interaction = Case.find(:id => '27627')
+    assert_equal "#{@site}/agent/case/27627", interaction.agent_url
   end
   
   def test_get_cases
