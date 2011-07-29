@@ -82,10 +82,10 @@ module Assistly
         response = client.send(verb, path)
         puts response.body.to_s if debug_mode
         hash = parse(response)
-        if hash['results']
-          Result.new(hash, self)
-        else
+        if (hash['success'] and hash['total'].nil?)
           self.new(hash)
+        else
+          Result.new(hash, self)
         end
       end
   

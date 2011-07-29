@@ -11,8 +11,13 @@ module Assistly
         @page  = hash['page'].to_i
         return unless hash['results']
         
-        @results = hash['results'].collect do |resource|
-          klass.new(resource)
+        @results = hash['results']
+        @results = if @results.is_a?(Hash)
+          [klass.new(@results[klass.to_s.downcase])]
+        else
+          @results.collect do |resource|
+            klass.new(resource)
+          end
         end
         super(@results)
       end
