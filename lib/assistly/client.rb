@@ -78,7 +78,7 @@ module Assistly
         path << "/#{options.delete(:id)}" if options[:id]
         path << options.delete(:nested_resource) if options[:nested_resource]
         path << ".#{DEFAULT_FORMAT}"
-        path << "?#{build_params(options)}" if options.any? && require_body?(verb)
+        path << "?#{build_params(options)}" if options.any? && !require_body?(verb)
         path
       end
   
@@ -91,7 +91,7 @@ module Assistly
         raise ArgumentError, "must be one of #{HTTP_VERBS.join(',')}" unless HTTP_VERBS.include?(verb.to_sym)
 
         path = build_path(options, verb)
-        body = options.any? ? options : nil
+        body = options.any? ? options : nil if require_body?(verb)
 
         method_params = [verb, path, body]
         response = client.send(*method_params.compact)
@@ -123,7 +123,7 @@ module Assistly
       end
       
       def require_body?(verb)
-        [:get, :delete].include?(verb.to_sym)
+        [:post, :put].include?(verb.to_sym)
       end
     end
   end
