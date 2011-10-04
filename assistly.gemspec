@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'assistly_api'
-  s.version      = '0.1'
+  s.version      = '0.1.1'
   s.summary      = 'Assistly API Ruby bindings using OAuth.'
   s.description  = 'A simple ruby interface to Assistly.'
 
@@ -11,5 +11,5 @@ Gem::Specification.new do |s|
   
   s.files = Dir['lib/**/*']
   s.require_path = 'lib'
-  
+  s.add_dependency('oauth', '0.4.4')
 end
