@@ -9,7 +9,11 @@ module Assistly
         @total = hash['total'].to_i
         @count = hash['count'].to_i
         @page  = hash['page'].to_i
-        return unless hash['results']
+        
+        if not hash['results']
+          @results = []
+          return
+        end
         
         @results = hash['results']
         @results = if @results.is_a?(Hash)
