@@ -17,6 +17,10 @@ module Assistly
       def id
         @properties['id']
       end
+
+      def self.update_attributes(hash)
+        put(hash)
+      end
     end
   end
 end

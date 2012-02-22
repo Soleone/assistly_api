@@ -6,10 +6,6 @@ module Assistly
         get(options)
       end
       
-      def self.update_attributes(options)
-        put(options)
-      end
-      
       def self.create_phone(options)
         options[:nested_resource] = "/phones"
         post(options)
