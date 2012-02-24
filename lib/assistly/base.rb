@@ -7,9 +7,8 @@ module Assistly
       def initialize(hash)
         class_name = self.class.name.split('::').last.downcase
         
-        # requests to interaction endpoint will return case instances
-        class_name = 'Case' if class_name == 'Interaction'
-        
+        hash = hash['results'] if hash.key?('results')
+
         @properties = hash[class_name]
         super(hash[class_name])
       end

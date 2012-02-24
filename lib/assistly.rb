@@ -1,5 +1,6 @@
 require 'rubygems'  # TODO: not always require rubygems
 require 'ostruct'
+require 'delegate'  # needed in Ruby 1.9
 
 require 'oauth'
 require 'json'
