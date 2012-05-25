@@ -9,7 +9,7 @@ module Assistly
 
       def initialize(consumer_key, consumer_secret, subdomain, options = {})
         @consumer_key, @consumer_secret = consumer_key, consumer_secret
-        @site = "https://#{subdomain}.assistly.com"
+        @site = "https://#{subdomain}.desk.com"
         @access_token_key, @access_token_secret = options[:access_token_key], options[:access_token_secret]
       end
 

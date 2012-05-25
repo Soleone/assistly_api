@@ -11,7 +11,7 @@ class AuthenticationTest < Test::Unit::TestCase
   end
   
   def test_initialize_sets_consumer_key_and_secret
-    assert_equal "https://#{subdomain}.assistly.com", @authentication.site
+    assert_equal "https://#{subdomain}.desk.com", @authentication.site
   end
   
   def test_consumer
@@ -19,7 +19,7 @@ class AuthenticationTest < Test::Unit::TestCase
   end
   
   def test_authorize_url
-    assert_match %r{https://#{subdomain}.assistly.com/oauth/authorize\?oauth_token=\w{16,}}, @authentication.authorize_url
+    assert_match %r{https://#{subdomain}.desk.com/oauth/authorize\?oauth_token=\w{16,}}, @authentication.authorize_url
   end
   
   def test_authenticate_from_access_token
