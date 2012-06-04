@@ -5,16 +5,20 @@ module Assistly
       include Enumerable
       attr_reader :results, :total, :count, :page
       
+      def method_name
+        
+      end
+      
       def initialize(hash, klass)
         @total = hash['total'].to_i
         @count = hash['count'].to_i
         @page  = hash['page'].to_i
         
-        if not hash['results']
+        unless hash['results']
           @results = []
-          return
+          return klass.new(hash)
         end
-        
+
         @results = hash['results']
         @results = if @results.is_a?(Hash)
           [klass.new(@results[klass.to_s.downcase])]

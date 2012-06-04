@@ -99,7 +99,7 @@ module Assistly
         debug_request(verb, path, body, response)
         
         hash = parse(response)
-        if (hash['success'] and hash['total'].nil?)
+        if !hash['results'] || (hash['success'] && hash['total'].nil?)
           self.new(hash)
         else
           Result.new(hash, self)
