@@ -41,5 +41,7 @@ class CaseTest < Test::Unit::TestCase
     assert_equal 100, cases.size
     first_case, second_case = cases[0], cases[1]
     assert first_case.created_at > second_case.created_at
+
+    assert_equal 'dennistheisen@gmail.com', first_case.email
   end
 end
